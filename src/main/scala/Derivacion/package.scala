@@ -7,24 +7,26 @@ package object Derivacion {
     derivadaX
   }
 
-  def derivadaSuma(f: funReal, g: funReal): (Double, Double) => Double = {
-    def derivadaSumaX(x1: Double, x2: Double): Double = {
-      derivada(f)(x1) + derivada(g)(x1)
+  def derivadaSuma(f: funReal, g: funReal): funReal = {
+    def derivadaSumaX(x: Double): Double = {
+      derivada(f)(x) + derivada(g)(x)
     }
     derivadaSumaX
   }
 
-  def derivadaResta(f: funReal, g: funReal): (Double, Double) => Double = {
-    def derivadaRestaX(x1: Double, x2: Double): Double = derivada(f)(x1) - derivada(g)(x1)
+  def derivadaResta(f: funReal, g: funReal): funReal = {
+    def derivadaRestaX(x: Double): Double = {
+      derivada(f)(x) - derivada(g)(x)
+    }
     derivadaRestaX
   }
-  def derivadaMult(f: funReal, g: funReal): (Double, Double) => Double = {
-    def derivadaMultX(x1: Double, x2: Double): Double = derivada(f)(x1) * g(x2) + derivada(g)(x2)*derivada(f)(x1)
+  def derivadaMult(f: funReal, g: funReal): funReal = {
+    def derivadaMultX(x: Double): Double = derivada(f)(x) * g(x) + derivada(g)(x)*derivada(f)(x)
     derivadaMultX
   }
-  def derivadaDiv(f: funReal, g: funReal): (Double, Double) => Double = {
-    def derivadaDivX(x1: Double, x2: Double): Double = {
-      (derivada(f)(x1) * g(x2) - derivada(g)(x2) * derivada(f)(x1)) / (g(x2) * g(x2))
+  def derivadaDiv(f: funReal, g: funReal): funReal = {
+    def derivadaDivX(x: Double): Double = {
+      (derivada(f)(x) * g(x) - derivada(g)(x) * derivada(f)(x)) / (g(x) * g(x))
     }
     derivadaDivX
   }
