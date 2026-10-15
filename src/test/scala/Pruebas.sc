@@ -1,17 +1,56 @@
-import Derivacion ._
-val f = (x:Double) => (x*x*x*x)
-val g = (x: Double) => (x)
-val cte= (x: Double) => 2.0
-derivada(g)(2)
+import Derivacion.{derivada, derivadaDiv, derivadaMult, derivadaResta, derivadaSuma}
+// ==========================================
+// 1. DERIVADA NUMÉRICA (FÓRMULA DE CINCO PUNTOS)
+// ==========================================
+println("=== derivada ===")
+println(derivada((x: Double) => 7.0)(3.0))               
+println(derivada((x: Double) => 3 * x + 2)(-2.0))      
+println(derivada((x: Double) => x * x + 4 * x)(2.0))      
+println(derivada((x: Double) => x * x * x - 2 * x)(3.0))   
+println(derivada((x: Double) => x * x * x * x)(2.0))      
 
-val h1 = derivadaDiv(f,g)
-val h2 = derivadaSuma(f,g)
-val h3 = derivadaMult(f,g)
-val h4 = derivadaResta(f,g)
+
+// ==========================================
+// 2. DERIVADA DE UNA SUMA
+// ==========================================
+println("\n=== derivadaSuma ===")
+println(derivadaSuma((x: Double) => x * x + 3 * x + 1, (x: Double) => 2 * x + 5)(2.0)) 
+println(derivadaSuma((x: Double) => x * x * x - 2 * x, (x: Double) => x + 4)(2.0))    
+println(derivadaSuma((x: Double) => 4 * x * x, (x: Double) => x * x - 3 * x)(-1.0))   
+println(derivadaSuma((x: Double) => 5 * x + 8, (x: Double) => 7 * x - 2)(4.0))        
+println(derivadaSuma((x: Double) => 6.0, (x: Double) => x * x + 1)(-3.0))    
 
 
-h1(-2)
-h2(-2)
-h3(-2)
-h4(-2)
-derivada(f)(5)
+// ==========================================
+// 3. DERIVADA DE UNA RESTA
+// ==========================================
+println("\n=== derivadaResta ===")
+println(derivadaResta((x: Double) => x * x + 3 * x + 1, (x: Double) => 2 * x + 5)(2.0)) 
+println(derivadaResta((x: Double) => x * x * x - 2 * x, (x: Double) => x + 4)(2.0))    
+println(derivadaResta((x: Double) => 4 * x * x, (x: Double) => x * x - 3 * x)(-1.0))  
+println(derivadaResta((x: Double) => 5 * x + 8, (x: Double) => 7 * x - 2)(4.0))        
+println(derivadaResta((x: Double) => 6.0, (x: Double) => x * x + 1)(-3.0))              
+
+
+// ==========================================
+// 4. DERIVADA DE UN PRODUCTO
+// ==========================================
+
+println("\n=== derivadaMult ===")
+println(derivadaMult((x: Double) => x * x + 1, (x: Double) => x + 2)(1.0))             
+println(derivadaMult((x: Double) => x * x + 3 * x + 1, (x: Double) => 2 * x + 5)(1.0)) 
+println(derivadaMult((x: Double) => x * x * x - 2 * x, (x: Double) => x + 4)(2.0))     
+println(derivadaMult((x: Double) => 3 * x + 1, (x: Double) => x * x + 2)(-1.0))        
+println(derivadaMult((x: Double) => 5.0, (x: Double) => x * x + 1)(3.0))              
+
+
+// ==========================================
+// 5. DERIVADA DE UN COCIENTE
+// ==========================================
+
+println("\n=== derivadaDiv ===")
+println(derivadaDiv((x: Double) => x * x + 1, (x: Double) => x + 2)(1.0))              
+println(derivadaDiv((x: Double) => x * x + 3 * x + 1, (x: Double) => 2 * x + 5)(1.0))
+println(derivadaDiv((x: Double) => x * x * x - 2 * x, (x: Double) => x + 4)(2.0))     
+println(derivadaDiv((x: Double) => 3 * x + 1, (x: Double) => x * x + 2)(-1.0))         
+println(derivadaDiv((x: Double) => 5.0, (x: Double) => x * x + 1)(2.0))               
